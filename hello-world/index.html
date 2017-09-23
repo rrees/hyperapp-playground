@@ -1,0 +1,14 @@
+
+<body>
+	<script src="https://unpkg.com/hyperapp"></script>
+	<script>
+		const {h, app} = hyperapp
+
+		app({
+			state: {
+				title: "Hello world"
+			},
+			view: state => h("h1", {}, state.title)
+		})
+	</script>
+</body>
