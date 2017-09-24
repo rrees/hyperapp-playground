@@ -1,0 +1,18 @@
+<body>
+	<script src="https://unpkg.com/hyperapp"></script>
+	<script>
+		const {h, app} = hyperapp;
+
+		app({
+			state: {
+				count: 0
+			},
+			actions: {
+
+			},
+			view: (state, actions) =>
+				h("h1", {}, "Counters", h("p", {}, state.count))
+
+		});
+	</script>
+</body>
