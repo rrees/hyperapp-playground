@@ -8,10 +8,16 @@
 				count: 0
 			},
 			actions: {
-
+				down: (state) => ({count: state.count - 1}),
+				up: (state) => ({count: state.count + 1})
 			},
 			view: (state, actions) =>
-				h("h1", {}, "Counters", h("p", {}, state.count))
+				h("h1", {}, "Counters",
+					[
+						h("p", {}, state.count),
+						h("button", {onclick: actions.up}, "Add"),
+						h("button", {onclick: actions.down}, "Subtract")
+					])
 
 		});
 	</script>
