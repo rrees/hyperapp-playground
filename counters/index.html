@@ -8,8 +8,8 @@
 				count: 0
 			},
 			actions: {
-				down: (state) => ({count: state.count - 1}),
-				up: (state) => ({count: state.count + 1})
+				down: (state) => { return {count: state.count - 1} },
+				up: (state) => { return {count: state.count + 1} }
 			},
 			view: (state, actions) =>
 				h("h1", {}, "Counters",
