@@ -1,0 +1,28 @@
+<body>
+	<script src="https://unpkg.com/hyperapp"></script>
+	<script>
+		const {h, app} = hyperapp;
+
+		function Counter(state, actions) {
+			return h("h1", {}, "Counters",
+				[
+					h("p", {}, state.count),
+					h("button", {onclick: actions.up}, "Add"),
+					h("button", {onclick: actions.down}, "Subtract")
+				]);
+		}
+
+		app({
+			state: {
+				count: 0
+			},
+			actions: {
+				down: (state) => { return {count: state.count - 1} },
+				up: (state) => { return {count: state.count + 1} }
+			},
+			view: (state, actions) => Counter(state, actions)
+
+
+		});
+	</script>
+</body>
