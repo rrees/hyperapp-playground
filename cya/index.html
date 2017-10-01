@@ -1,0 +1,84 @@
+<html lang="en">
+	<head>
+		<title>Choose your own adventure - Hyperapp</title>
+		<meta charset="utf-8"> 
+	</head>
+	<body>
+		<script src="https://unpkg.com/hyperapp"></script>
+		<script>
+			const {h, app} = hyperapp;
+
+			const data = {
+				"courtyard": {
+					"title": "Courtyard",
+					"description": "The ground is muddy and the air is cold.",
+					"actions": [
+						{
+							"description": "Enter the gatehouse",
+							"nextEntry": {
+								"id": "gatehouse",
+								"flags": []
+							}
+						}
+					]
+				},
+				"gatehouse": {
+					"title": "The Gatehouse",
+					"description": "A shaft of light illuminates the interior of the gatehouse.",
+					"actions": [
+						{
+							"description": "Enter the courtyard",
+							"nextEntry": {
+								"id": "courtyard",
+								"flags": []
+							}
+						}
+					]
+				}
+			}
+
+			function Action(state, actions, action) {
+				return h("li", {onclick: () => actions.nextEntry(action.nextEntry)}, action.description);
+			}
+			function Actions(state, actions, entry) {
+
+				return h("ul", {}, [
+					entry.actions.map((action) => {
+						return Action(state, actions, action);
+					})
+				])
+			}
+
+			function Entry(state, actions) {
+				const entry = data[state.currentEntry];
+
+				const entryDescription =  [
+					h("h1", {}, entry.title),
+					h("p", {}, entry.description)
+					];
+
+				const actionList = entry.actions ? entry.actions.map((action) => Actions(state, actions, entry)) : [];
+				const children = entryDescription.concat(actionList);
+
+				return h("div", {}, children);
+			}
+
+			app({
+				state: {
+					currentEntry: "courtyard",
+					flags: []
+				},
+				actions: {
+					nextEntry: (state, actions, nextEntry) => {
+						console.log(state, actions, nextEntry);
+						return {
+							currentEntry: nextEntry.id,
+							flags: state.flags
+						}
+					}
+				},
+				view: (state, actions) => Entry(state, actions)
+
+			});
+		</script>
+	</body>
