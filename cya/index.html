@@ -20,6 +20,16 @@
 								"flags": []
 							}
 						}
+					],
+					"conditionalDescriptions": [
+						{
+							"flagMissing": "gatewayOpen",
+							"description": "The gate is closed."
+						},
+						{
+							"flag": "gatewayOpen",
+							"description": "The gate is open."
+						},
 					]
 				},
 				"gatehouse": {
@@ -56,6 +66,22 @@
 					h("h1", {}, entry.title),
 					h("p", {}, entry.description)
 					];
+				
+				if(entry.conditionalDescriptions) {
+					entry.conditionalDescriptions.forEach(function(description) {
+						if(description.flag) {
+							if(state.flags.includes(description.flag)) {
+								entryDescription.push(h("p", {}, description.description));
+							}
+						}
+
+						if(description.flagMissing) {
+							if(!state.flags.includes(description.flagMissing)) {
+								entryDescription.push(h("p", {}, description.description));
+							}
+						}
+					});
+				}
 
 				const actionList = entry.actions ? entry.actions.map((action) => Actions(state, actions, entry)) : [];
 				const children = entryDescription.concat(actionList);
