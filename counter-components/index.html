@@ -14,11 +14,22 @@
 
 		app({
 			state: {
+				counters [
+					0, 0, 0
+				].map(x => x)
 				count: 0
 			},
 			actions: {
-				down: (state) => { return {count: state.count - 1} },
-				up: (state) => { return {count: state.count + 1} }
+				down: (counter_id, state) => {
+					return {
+						counters: counters.map((val, idx) => idx === counter_id ? val -1 : val)
+					}
+				},
+				up: (state) => {
+					return {
+						counters: counters.map((val, idx) => idx === counter_id ? val -1 : val)
+					}
+				}
 			},
 			view: (state, actions) => Counter(state, actions)
 
