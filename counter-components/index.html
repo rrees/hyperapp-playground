@@ -1,39 +1,46 @@
-<body>
-	<script src="https://unpkg.com/hyperapp"></script>
-	<script>
-		const {h, app} = hyperapp;
+<html lang="en">
+	<head>
+		<title>Counter components</title>
+		<meta charset="utf-8"> 
+	</head>
+	<body>
+		<script src="https://unpkg.com/hyperapp"></script>
+		<script>
+			const {h, app} = hyperapp;
 
-		function Counter(state, actions) {
-			return h("h1", {}, "Counters",
-				[
-					h("p", {}, state.count),
-					h("button", {onclick: actions.up}, "Add"),
-					h("button", {onclick: actions.down}, "Subtract")
+			function Counter(counter_id, count, state, actions) {
+				return h("div", {},
+					[
+						h("p", {}, count),
+						h("button", {onclick: () => actions.increment({counterId: counter_id, increment: 1})}, "Add"),
+						h("button", {onclick: () => actions.increment({counterId: counter_id, increment: -1})}, "Subtract")
+					]);
+			}
+
+			function Counters(state, actions) {
+				const counters = state.counters
+					.map( (counter, index) => Counter(index, counter, state, actions));
+				
+				return h("section", {}, [
+					h("h1", {}, "Counters", counters)
 				]);
-		}
+			}
 
-		app({
-			state: {
-				counters [
-					0, 0, 0
-				].map(x => x)
-				count: 0
-			},
-			actions: {
-				down: (counter_id, state) => {
-					return {
-						counters: counters.map((val, idx) => idx === counter_id ? val -1 : val)
-					}
+			app({
+				state: {
+					counters: [
+						0, 0, 0, 0, 0
+					].map(x => x)
 				},
-				up: (state) => {
-					return {
-						counters: counters.map((val, idx) => idx === counter_id ? val -1 : val)
-					}
-				}
-			},
-			view: (state, actions) => Counter(state, actions)
+				actions: {
+					increment: (state, actions, {counterId, increment}) => {
+						return {
+							counters: state.counters.map((val, idx) => idx === counterId ? val + increment : val)
+						}
+					},
+				},
+				view: (state, actions) => Counters(state, actions)
 
-
-		});
-	</script>
-</body>
+			});
+		</script>
+	</body>
