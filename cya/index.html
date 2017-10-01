@@ -23,24 +23,33 @@
 					],
 					"conditionalDescriptions": [
 						{
-							"flagMissing": "gatewayOpen",
+							"flagMissing": "gateOpen",
 							"description": "The gate is closed."
 						},
 						{
-							"flag": "gatewayOpen",
+							"flag": "gateOpen",
 							"description": "The gate is open."
 						},
 					]
 				},
 				"gatehouse": {
 					"title": "The Gatehouse",
-					"description": "A shaft of light illuminates the interior of the gatehouse.",
+					"description": "A shaft of light illuminates the interior of the gatehouse. A large wooden lever is on the wall.",
 					"actions": [
 						{
 							"description": "Enter the courtyard",
 							"nextEntry": {
 								"id": "courtyard",
 								"flags": []
+							}
+						},
+						{
+							"description": "Pull the lever",
+							"nextEntry": {
+								"id": "gatehouse",
+								"flags": [
+									"gateOpen"
+								]
 							}
 						}
 					]
@@ -70,20 +79,20 @@
 				if(entry.conditionalDescriptions) {
 					entry.conditionalDescriptions.forEach(function(description) {
 						if(description.flag) {
-							if(state.flags.includes(description.flag)) {
+							if(state.flags.has(description.flag)) {
 								entryDescription.push(h("p", {}, description.description));
 							}
 						}
 
 						if(description.flagMissing) {
-							if(!state.flags.includes(description.flagMissing)) {
+							if(!state.flags.has(description.flagMissing)) {
 								entryDescription.push(h("p", {}, description.description));
 							}
 						}
 					});
 				}
 
-				const actionList = entry.actions ? entry.actions.map((action) => Actions(state, actions, entry)) : [];
+				const actionList = entry.actions ? Actions(state, actions, entry) : [];
 				const children = entryDescription.concat(actionList);
 
 				return h("div", {}, children);
@@ -92,14 +101,14 @@
 			app({
 				state: {
 					currentEntry: "courtyard",
-					flags: []
+					flags: new Set()
 				},
 				actions: {
 					nextEntry: (state, actions, nextEntry) => {
 						console.log(state, actions, nextEntry);
 						return {
 							currentEntry: nextEntry.id,
-							flags: state.flags
+							flags: nextEntry.flags.reduce((flags, flag) => flags.add(flag), state.flags)
 						}
 					}
 				},
