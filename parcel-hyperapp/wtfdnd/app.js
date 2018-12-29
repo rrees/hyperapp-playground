@@ -1,13 +1,15 @@
 
 import {h, app} from 'hyperapp';
 
+import {choice} from 'rrees-js-random';
+
 const characterIdeas = [
 	"A Drow one day from retirement",
 	"A myopic gnome who wants to be a healer",
 ];
 
 function generateCharacter() {
-	return characterIdeas[0];
+	return choice(characterIdeas);
 }
 
 const state = {

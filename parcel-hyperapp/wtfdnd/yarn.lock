@@ -4255,6 +4255,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rrees-js-random@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/rrees-js-random/-/rrees-js-random-1.1.0.tgz#4a2eb0042e2eed8a31f0a86953b3bff8ee646c2a"
+  integrity sha512-VM6r/h1gVwO1ln2Ran6xkl2C440199ALIcubxKgwu/efOxhp7OlCq+Ez3SChJApgAyU/z5RoD6l0c6pUPP4JjA==
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
