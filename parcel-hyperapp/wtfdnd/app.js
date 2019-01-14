@@ -8,8 +8,28 @@ const characterIdeas = [
 	"A myopic gnome who wants to be a healer",
 ];
 
+const races = ["Drow", "Gnome", "Elf"];
+
+const classes = ["fighter", "rogue", "sorceror", "cleric"];
+
+const motivations = [
+	"one day from retirement",
+	"wants to be a healer",
+	"looking for revenge",
+];
+
+
 function generateCharacter() {
-	return choice(characterIdeas);
+	return {
+		race: choice(races),
+		motivation: choice(motivations),
+		class: choice(classes),
+	}
+}
+
+function generateDescription() {
+	const character = generateCharacter();
+	return `A ${character.race} ${character.class} ${character.motivation}`
 }
 
 const state = {
@@ -17,7 +37,7 @@ const state = {
 };
 
 const actions = {
-	regenerate: value => state => ({characterDescription: generateCharacter()}),
+	regenerate: value => state => ({characterDescription: generateDescription()}),
 };
 
 function view(state, actions) {
