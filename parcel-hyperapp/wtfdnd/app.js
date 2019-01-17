@@ -3,37 +3,24 @@ import {h, app} from 'hyperapp';
 
 import {choice} from 'rrees-js-random';
 
-const characterIdeas = [
-	"A Drow one day from retirement",
-	"A myopic gnome who wants to be a healer",
-];
-
-const races = ["Drow", "Gnome", "Elf"];
-
-const classes = ["fighter", "rogue", "sorceror", "cleric"];
-
-const motivations = [
-	"one day from retirement",
-	"wants to be a healer",
-	"looking for revenge",
-];
-
+import {characterIdeas} from './data';
 
 function generateCharacter() {
 	return {
-		race: choice(races),
-		motivation: choice(motivations),
-		class: choice(classes),
+		race: choice(characterIdeas.races),
+		motivation: choice(characterIdeas.motivations),
+		class: choice(characterIdeas.classes),
+		homeTown: choice(characterIdeas.homeTowns),
 	}
 }
 
 function generateDescription() {
 	const character = generateCharacter();
-	return `A ${character.race} ${character.class} ${character.motivation}`
+	return `A ${character.race} ${character.class} from ${character.homeTown} who is ${character.motivation}`
 }
 
 const state = {
-    characterDescription: "No character generated",
+    characterDescription: generateDescription(),
 };
 
 const actions = {

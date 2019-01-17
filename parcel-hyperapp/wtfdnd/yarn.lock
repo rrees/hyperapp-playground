@@ -1656,6 +1656,13 @@ csso@~2.3.1:
     clap "^1.0.9"
     source-map "^0.5.3"
 
+data@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/data/-/data-0.6.1.tgz#f363b07224f48e7cfd71d3df46c4b11f6f8e5f75"
+  integrity sha1-82OwciT0jnz9cdPfRsSxH2+OX3U=
+  dependencies:
+    "0" underscore
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -4784,6 +4791,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+underscore@:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
+  integrity sha512-5/4etnCkd9c8gwgowi5/om/mYO5ajCaOgdzj/oW+0eQV9WxKBDZw5+ycmKmeaTXjInS/W0BzpGLo2xR2aBwZdg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
