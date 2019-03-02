@@ -8,15 +8,21 @@ const searching = [
 	"an ancient treasure",
 	"a prophesied king",
 	"a missing sibling",
-].map((goal) => `searching for ${goal}`)
+].map((goal) => `searching for ${goal}`);
+
+const running = [
+	"an arranged marriage",
+	"a vengeful cult",
+	"the wrath of a dead god",
+].map((source) => `on the run from ${source}`);
 
 const motivations = [
 	"one day from retirement",
 	"seeking to be a healer",
 	"looking for revenge",
-	"on the run from an arranged marriage",
 	"being persued by a vicious crime syndicate",
 	...searching,
+	...running,
 ];
 
 const homeTowns = [
