@@ -2,14 +2,21 @@ const races = ["Drow", "Gnome", "Elf", "Halfling", "Half-orc", "Human", "Dwarf"]
 
 const classes = ["fighter", "rogue", "sorceror", "cleric", "monk", "paladin", "ranger", "wizard"];
 
+const searching = [
+	"their family",
+	"a lost city",
+	"an ancient treasure",
+	"a prophesied king",
+	"a missing sibling",
+].map((goal) => `searching for ${goal}`)
+
 const motivations = [
 	"one day from retirement",
 	"seeking to be a healer",
 	"looking for revenge",
 	"on the run from an arranged marriage",
-	"looking for a lost city",
 	"being persued by a vicious crime syndicate",
-	"searching for their family",
+	...searching,
 ];
 
 const homeTowns = [
