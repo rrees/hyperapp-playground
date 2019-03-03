@@ -25,14 +25,33 @@ const motivations = [
 	...running,
 ];
 
-const homeTowns = [
-	"an ancient forest",
+const basicHomeTownTypes = [
+	"forest",
+	"city",
+	"valley",
+];
+
+const basicHomeTownDescriptions = [
+	"a huge",
+	"an ancient",
+	"a distant",
+	"a vast",
+];
+
+
+const basicHomeTowns = basicHomeTownTypes.flatMap(
+	(homeType) => basicHomeTownDescriptions.map( (adjective) => `${adjective} ${homeType}`));
+
+const specialHomeTowns = [
 	"a corrupted temple",
 	"a city of thieves",
 	"the far wilderness",
-	"a distant valley",
 	"a fallen kingdom",
-	"a vast forest",
+];
+
+const homeTowns = [
+	...basicHomeTowns,
+	...specialHomeTowns,
 ];
 
 export const characterIdeas = {
