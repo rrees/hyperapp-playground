@@ -8,27 +8,46 @@ const searching = [
 	"an ancient treasure",
 	"a prophesied king",
 	"a missing sibling",
+	"a family heirloom",
+	"the truth about their parentage",
 ].map((goal) => `searching for ${goal}`);
 
 const running = [
 	"an arranged marriage",
 	"a vengeful cult",
 	"the wrath of a dead god",
+	"a dark fate",
+	"the law",
 ].map((source) => `on the run from ${source}`);
+
+const looking = [
+	"revenge",
+	"love",
+	"the one",
+	"trouble",
+].map((goal) => `looking for ${goal}`);
+
+const ending = [
+	"slavery",
+	"the influence of demons",
+	"the patriarchy",
+].map((goal) => `wanting to bring an end to ${goal}`);
 
 const motivations = [
 	"one day from retirement",
 	"seeking to be a healer",
-	"looking for revenge",
 	"being persued by a vicious crime syndicate",
 	...searching,
 	...running,
+	...looking,
+	...ending,
 ];
 
 const basicHomeTownTypes = [
 	"forest",
 	"city",
 	"valley",
+	"mountain range",
 ];
 
 const basicHomeTownDescriptions = [
@@ -36,6 +55,8 @@ const basicHomeTownDescriptions = [
 	"an ancient",
 	"a distant",
 	"a vast",
+	"a corrupted",
+	"a dark",
 ];
 
 
@@ -47,6 +68,8 @@ const specialHomeTowns = [
 	"a city of thieves",
 	"the far wilderness",
 	"a fallen kingdom",
+	"a small farm",
+	"the frozen wastes",
 ];
 
 const homeTowns = [
